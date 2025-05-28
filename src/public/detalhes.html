@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Produto</title>
+</head>
+<body>
+<h1>Detalhes do Produto</h1>
+<div id="detalhes-produto"></div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    fetch(`http://localhost:3000/produtos/${id}`)
+        .then(res => res.json())
+        .then(p => {
+            const div = document.getElementById('detalhes-produto');
+            div.innerHTML = `
+          <p><strong>Nome:</strong> ${p.nome}</p>
+          <p><strong>Descrição:</strong> ${p.descricao}</p>
+          <p><strong>Preço:</strong> R$ ${p.preco}</p>
+        `;
+        });
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Lista de Produtos</h1>
+<ul id="lista-produtos"></ul>
+
+<script>
+    fetch('http://localhost:3000/produtos')
+        .then(res => res.json())
+        .then(produtos => {
+            const ul = document.getElementById('lista-produtos');
+            produtos.forEach(p => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="detalhes.html?id=${p.id}">${p.nome}</a>`;
+                ul.appendChild(li);
+            });
+        });
+</script>
+</body>
+</html>

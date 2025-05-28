@@ -1,0 +1,22 @@
+{
+  "produtos": [
+    {
+      "nome": "Mouse",
+      "descricao": "Gamer",
+      "preco": 150,
+      "id": "3038"
+    },
+    {
+      "id": "3bc4",
+      "nome": "Teclado",
+      "descricao": "Gamer",
+      "preco": 230
+    },
+    {
+      "id": "eca8",
+      "nome": "Monitor",
+      "descricao": "Gamer",
+      "preco": 950
+    }
+  ]
+}
