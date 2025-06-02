@@ -22,16 +22,16 @@
       "nome": "Mouse",
       "descricao": "Office",
       "preco": 150,
-      "id": "3038"
+      "id": "3037"
     },
     {
-      "id": "3bc4",
+      "id": "3bc5",
       "nome": "Teclado",
       "descricao": "Office",
       "preco": 230
     },
     {
-      "id": "eca8",
+      "id": "eca9",
       "nome": "Monitor",
       "descricao": "Home",
       "preco": 950
