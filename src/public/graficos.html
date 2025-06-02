@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gráfico de Produtos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Gráfico de Produtos por Descrição</h1>
+<canvas id="grafico-produtos" width="300" height="100"></canvas>
+
+<script>
+    fetch('http://localhost:3000/produtos')
+        .then(res => res.json())
+        .then(produtos => {
+            const contagem = {};
+
+            produtos.forEach(p => {
+                contagem[p.descricao] = (contagem[p.descricao] || 0) + 1;
+            });
+
+            const labels = Object.keys(contagem);
+            const valores = Object.values(contagem);
+
+            new Chart(document.getElementById('grafico-produtos'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Quantidade por descrição',
+                        data: valores,
+                        backgroundColor: ['#4e79a7', '#f28e2c', '#e15759'],
+                        borderColor: '#333',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribuição de Produtos por Descrição'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        });
+</script>
+</body>
+</html>
+<style>
+    #grafico-produtos {
+        max-width: 1000px;
+        max-height: 600px;
+    }
+</style>
